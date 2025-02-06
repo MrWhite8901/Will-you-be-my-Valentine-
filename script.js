@@ -23,5 +23,26 @@ function handleNoClick() {
 }
 
 function handleYesClick() {
+    const webhookURL = 'https://discord.com/api/webhooks/1316337085220913212/fKD1LoylLmv4KYwjFp6miMRoktqgPxDZ6fp0_0EPubX6b53k4sLgczziHnA7vFYTavW3'; // Replace with your actual webhook URL
+    const messageContent = {
+        content: "User clicked Yes! 🎉"
+    };
+
+    fetch(webhookURL, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(messageContent),
+    })
+    .then(response => {
+        if (!response.ok) {
+            console.error('Failed to send message to Discord');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+
     window.location.href = "yes_page.html";
 }
